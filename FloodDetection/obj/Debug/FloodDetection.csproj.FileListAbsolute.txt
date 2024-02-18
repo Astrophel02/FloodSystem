@@ -12,3 +12,17 @@ D:\Experiment\Code\dotNET\FloodDetection\FloodDetection\bin\Debug\changeDetectio
 D:\Experiment\Code\dotNET\FloodDetection\FloodDetection\bin\Debug\MWArray.dll
 D:\Experiment\Code\dotNET\FloodDetection\FloodDetection\obj\Debug\FloodDetection.csproj.CopyComplete
 D:\Experiment\Code\dotNET\FloodDetection\FloodDetection\obj\Debug\FloodDetection.change.resources
+C:\Users\admin\Desktop\dc_algorithm\Github_online\FloodSystem\FloodDetection\bin\Debug\FloodDetection.exe.config
+C:\Users\admin\Desktop\dc_algorithm\Github_online\FloodSystem\FloodDetection\bin\Debug\FloodDetection.exe
+C:\Users\admin\Desktop\dc_algorithm\Github_online\FloodSystem\FloodDetection\bin\Debug\FloodDetection.pdb
+C:\Users\admin\Desktop\dc_algorithm\Github_online\FloodSystem\FloodDetection\bin\Debug\changeDetectionNative.dll
+C:\Users\admin\Desktop\dc_algorithm\Github_online\FloodSystem\FloodDetection\bin\Debug\MWArray.dll
+C:\Users\admin\Desktop\dc_algorithm\Github_online\FloodSystem\FloodDetection\obj\Debug\FloodDetection.csproj.AssemblyReference.cache
+C:\Users\admin\Desktop\dc_algorithm\Github_online\FloodSystem\FloodDetection\obj\Debug\FloodDetection.change.resources
+C:\Users\admin\Desktop\dc_algorithm\Github_online\FloodSystem\FloodDetection\obj\Debug\FloodDetection.Form1.resources
+C:\Users\admin\Desktop\dc_algorithm\Github_online\FloodSystem\FloodDetection\obj\Debug\FloodDetection.Properties.Resources.resources
+C:\Users\admin\Desktop\dc_algorithm\Github_online\FloodSystem\FloodDetection\obj\Debug\FloodDetection.csproj.GenerateResource.cache
+C:\Users\admin\Desktop\dc_algorithm\Github_online\FloodSystem\FloodDetection\obj\Debug\FloodDetection.csproj.CoreCompileInputs.cache
+C:\Users\admin\Desktop\dc_algorithm\Github_online\FloodSystem\FloodDetection\obj\Debug\FloodDetection.csproj.CopyComplete
+C:\Users\admin\Desktop\dc_algorithm\Github_online\FloodSystem\FloodDetection\obj\Debug\FloodDetection.exe
+C:\Users\admin\Desktop\dc_algorithm\Github_online\FloodSystem\FloodDetection\obj\Debug\FloodDetection.pdb
