@@ -70,6 +70,7 @@ namespace FloodDetection
                 // object resultObj = CD.changeDetection(1, data.beforeImage, data.afterImage, lines, samples);
                 object[] resultObjs = (object[])resultObj;
                 double[,] bw = (double[,])resultObjs[0];
+
                 textBox3.Text = textBox3.Text + System.DateTime.Now.ToString("T") +   "执行成功，请点击保存以储存结果" + "\r\n";
             }
             else // 错误则在执行日志上输出提示，并弹窗提示
