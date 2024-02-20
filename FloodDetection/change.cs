@@ -21,6 +21,7 @@ namespace FloodDetection
         {
             public static string beforeImage = "";
             public static string afterImage = "";
+            public static double[,] bw;
         }
         public change()
         {
@@ -69,7 +70,7 @@ namespace FloodDetection
                 });
                 // object resultObj = CD.changeDetection(1, data.beforeImage, data.afterImage, lines, samples);
                 object[] resultObjs = (object[])resultObj;
-                double[,] bw = (double[,])resultObjs[0];
+                data.bw = (double[,])resultObjs[0];
 
                 textBox3.Text = textBox3.Text + System.DateTime.Now.ToString("T") +   "执行成功，请点击保存以储存结果" + "\r\n";
             }
@@ -89,6 +90,9 @@ namespace FloodDetection
         //实现结果保存和展示
         private void button2_Click(object sender, EventArgs e)
         {
+            MWArray result = new MWNumericArray(data.bw);
+            ChangeDetection CD = new ChangeDetection();
+            CD.saveImage(0, result);
             textBox3.Text = textBox3.Text + System.DateTime.Now.ToString("T") + " 保存成功" + "\r\n";
         }
     }
