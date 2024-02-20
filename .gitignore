@@ -13,6 +13,7 @@
 *.user
 *.userosscache
 *.sln.docstates
+.vs\FloodDetection\v17\.suo
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
@@ -399,4 +400,8 @@ FodyWeavers.xsd
 # JetBrains Rider
 *.sln.iml
 
-# End of https://www.toptal.com/developers/gitignore/api/csharp
+### VisualStudio Patch ###
+# Additional files built by Visual Studio
+
+# End of https://www.toptal.com/developers/gitignore/api/visualstudio
+.vs/FloodDetection/v17/.suo
