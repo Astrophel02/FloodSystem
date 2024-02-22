@@ -56,6 +56,10 @@
     <Reference Include="changeDetectionNative">
       <HintPath>..\changeDetectionNative.dll</HintPath>
     </Reference>
+    <Reference Include="DC_feature_extract_6Native, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DC_feature_extract_6Native.dll</HintPath>
+    </Reference>
     <Reference Include="MWArray, Version=2.23.1.0, Culture=neutral, PublicKeyToken=e1d84a0da19db86f, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\MWArray.dll</HintPath>
@@ -71,6 +75,10 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="Train_data_getNative, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Train_data_getNative.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="change.cs">
@@ -85,11 +93,11 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form_classification.cs">
+    <Compile Include="Form_classification_SVM.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form_classification.Designer.cs">
-      <DependentUpon>Form_classification.cs</DependentUpon>
+    <Compile Include="Form_classification_SVM.Designer.cs">
+      <DependentUpon>Form_classification_SVM.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -99,8 +107,8 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form_classification.resx">
-      <DependentUpon>Form_classification.cs</DependentUpon>
+    <EmbeddedResource Include="Form_classification_SVM.resx">
+      <DependentUpon>Form_classification_SVM.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
