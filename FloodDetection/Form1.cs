@@ -27,5 +27,11 @@ namespace FloodDetection
         {
             this.Close();
         }
+
+        private void sVMToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form_classification form_Classification = new Form_classification();
+            form_Classification.Show();
+        }
     }
 }
