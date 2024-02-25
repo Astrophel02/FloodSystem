@@ -99,6 +99,10 @@
     <Compile Include="Form_classification.Designer.cs">
       <DependentUpon>Form_classification.cs</DependentUpon>
     </Compile>
+    <Compile Include="geocode.cs" />
+    <Compile Include="geocode.Designer.cs">
+      <DependentUpon>geocode.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="change.resx">
@@ -109,6 +113,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form_classification.resx">
       <DependentUpon>Form_classification.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="geocode.resx">
+      <DependentUpon>geocode.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
