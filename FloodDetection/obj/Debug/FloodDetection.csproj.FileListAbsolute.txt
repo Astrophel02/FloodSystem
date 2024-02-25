@@ -58,3 +58,13 @@ C:\Users\admin\Desktop\DC_softer_0\Github_online\FloodSystem\FloodDetection\obj\
 C:\Users\admin\Desktop\DC_softer_0\Github_online\FloodSystem\FloodDetection\obj\Debug\FloodDetection.csproj.CopyComplete
 C:\Users\admin\Desktop\DC_softer_0\Github_online\FloodSystem\FloodDetection\obj\Debug\FloodDetection.exe
 C:\Users\admin\Desktop\DC_softer_0\Github_online\FloodSystem\FloodDetection\obj\Debug\FloodDetection.pdb
+E:\大创E\地理编码\FloodSystem\FloodDetection\obj\Debug\FloodDetection.csproj.AssemblyReference.cache
+E:\大创E\地理编码\FloodSystem\FloodDetection\obj\Debug\FloodDetection.change.resources
+E:\大创E\地理编码\FloodSystem\FloodDetection\obj\Debug\FloodDetection.Form1.resources
+E:\大创E\地理编码\FloodSystem\FloodDetection\obj\Debug\FloodDetection.Form_classification.resources
+E:\大创E\地理编码\FloodSystem\FloodDetection\obj\Debug\Geocode.geocode.resources
+E:\大创E\地理编码\FloodSystem\FloodDetection\obj\Debug\FloodDetection.Properties.Resources.resources
+E:\大创E\地理编码\FloodSystem\FloodDetection\obj\Debug\FloodDetection.csproj.GenerateResource.cache
+E:\大创E\地理编码\FloodSystem\FloodDetection\obj\Debug\FloodDetection.csproj.CoreCompileInputs.cache
+E:\大创E\地理编码\FloodSystem\FloodDetection\obj\Debug\FloodDetection.exe
+E:\大创E\地理编码\FloodSystem\FloodDetection\obj\Debug\FloodDetection.pdb
