@@ -33,5 +33,11 @@ namespace FloodDetection
             Form_classification form_Classification = new Form_classification();
             form_Classification.Show();
         }
+
+        private void 地理编码GToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            geocode geocode = new geocode();   
+            geocode.Show();
+        }
     }
 }

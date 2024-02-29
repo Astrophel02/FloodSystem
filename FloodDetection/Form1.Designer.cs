@@ -35,6 +35,7 @@
             this.变化检测ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.分类FCToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sVMToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.地理编码GToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -44,7 +45,8 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.开始ToolStripMenuItem,
             this.变化检测ToolStripMenuItem,
-            this.分类FCToolStripMenuItem});
+            this.分类FCToolStripMenuItem,
+            this.地理编码GToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1045, 28);
@@ -91,9 +93,16 @@
             // sVMToolStripMenuItem
             // 
             this.sVMToolStripMenuItem.Name = "sVMToolStripMenuItem";
-            this.sVMToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.sVMToolStripMenuItem.Size = new System.Drawing.Size(126, 26);
             this.sVMToolStripMenuItem.Text = "SVM";
             this.sVMToolStripMenuItem.Click += new System.EventHandler(this.sVMToolStripMenuItem_Click);
+            // 
+            // 地理编码GToolStripMenuItem
+            // 
+            this.地理编码GToolStripMenuItem.Name = "地理编码GToolStripMenuItem";
+            this.地理编码GToolStripMenuItem.Size = new System.Drawing.Size(104, 24);
+            this.地理编码GToolStripMenuItem.Text = "地理编码(G)";
+            this.地理编码GToolStripMenuItem.Click += new System.EventHandler(this.地理编码GToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -102,7 +111,7 @@
             this.ClientSize = new System.Drawing.Size(1045, 32);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "Form1";
             this.Text = "极化SAR洪涝灾害检测 alpha 0.1.0";
@@ -122,6 +131,7 @@
         private System.Windows.Forms.ToolStripMenuItem 说明ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 分类FCToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem sVMToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 地理编码GToolStripMenuItem;
     }
 }
 

@@ -99,7 +99,9 @@
     <Compile Include="Form_classification.Designer.cs">
       <DependentUpon>Form_classification.cs</DependentUpon>
     </Compile>
-    <Compile Include="geocode.cs" />
+    <Compile Include="geocode.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="geocode.Designer.cs">
       <DependentUpon>geocode.cs</DependentUpon>
     </Compile>
