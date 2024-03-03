@@ -56,7 +56,7 @@
             this.button_fc_svm_model_savepath = new System.Windows.Forms.Button();
             this.label_fc_train_data_folderpath = new System.Windows.Forms.Label();
             this.textBox_fc_svm_model_savepath = new System.Windows.Forms.TextBox();
-            this.textBox_fc_train_data_folderpath = new System.Windows.Forms.TextBox();
+            this.textBox_fc_train_data_filepath = new System.Windows.Forms.TextBox();
             this.button_fc_train_data_folderpath = new System.Windows.Forms.Button();
             this.label_fc_svm_model_savepath = new System.Windows.Forms.Label();
             this.splitContainer_fc_svm_train_up = new System.Windows.Forms.SplitContainer();
@@ -342,6 +342,7 @@
             this.button_fc_svm_train.TabIndex = 0;
             this.button_fc_svm_train.Text = "模型训练";
             this.button_fc_svm_train.UseVisualStyleBackColor = true;
+            this.button_fc_svm_train.Click += new System.EventHandler(this.button_fc_svm_train_Click);
             // 
             // groupBox_fc_svm_train
             // 
@@ -365,7 +366,7 @@
             this.splitContainer_fc_svm_train_down.Panel1.Controls.Add(this.button_fc_svm_model_savepath);
             this.splitContainer_fc_svm_train_down.Panel1.Controls.Add(this.label_fc_train_data_folderpath);
             this.splitContainer_fc_svm_train_down.Panel1.Controls.Add(this.textBox_fc_svm_model_savepath);
-            this.splitContainer_fc_svm_train_down.Panel1.Controls.Add(this.textBox_fc_train_data_folderpath);
+            this.splitContainer_fc_svm_train_down.Panel1.Controls.Add(this.textBox_fc_train_data_filepath);
             this.splitContainer_fc_svm_train_down.Panel1.Controls.Add(this.button_fc_train_data_folderpath);
             this.splitContainer_fc_svm_train_down.Panel1.Controls.Add(this.label_fc_svm_model_savepath);
             // 
@@ -382,8 +383,9 @@
             this.button_fc_svm_model_savepath.Name = "button_fc_svm_model_savepath";
             this.button_fc_svm_model_savepath.Size = new System.Drawing.Size(82, 25);
             this.button_fc_svm_model_savepath.TabIndex = 5;
-            this.button_fc_svm_model_savepath.Text = "获取";
+            this.button_fc_svm_model_savepath.Text = "设置";
             this.button_fc_svm_model_savepath.UseVisualStyleBackColor = true;
+            this.button_fc_svm_model_savepath.Click += new System.EventHandler(this.button_fc_svm_model_savepath_Click);
             // 
             // label_fc_train_data_folderpath
             // 
@@ -401,12 +403,12 @@
             this.textBox_fc_svm_model_savepath.Size = new System.Drawing.Size(295, 25);
             this.textBox_fc_svm_model_savepath.TabIndex = 3;
             // 
-            // textBox_fc_train_data_folderpath
+            // textBox_fc_train_data_filepath
             // 
-            this.textBox_fc_train_data_folderpath.Location = new System.Drawing.Point(236, 20);
-            this.textBox_fc_train_data_folderpath.Name = "textBox_fc_train_data_folderpath";
-            this.textBox_fc_train_data_folderpath.Size = new System.Drawing.Size(295, 25);
-            this.textBox_fc_train_data_folderpath.TabIndex = 2;
+            this.textBox_fc_train_data_filepath.Location = new System.Drawing.Point(236, 20);
+            this.textBox_fc_train_data_filepath.Name = "textBox_fc_train_data_filepath";
+            this.textBox_fc_train_data_filepath.Size = new System.Drawing.Size(295, 25);
+            this.textBox_fc_train_data_filepath.TabIndex = 2;
             // 
             // button_fc_train_data_folderpath
             // 
@@ -416,6 +418,7 @@
             this.button_fc_train_data_folderpath.TabIndex = 4;
             this.button_fc_train_data_folderpath.Text = "获取";
             this.button_fc_train_data_folderpath.UseVisualStyleBackColor = true;
+            this.button_fc_train_data_folderpath.Click += new System.EventHandler(this.button_fc_train_data_folderpath_Click);
             // 
             // label_fc_svm_model_savepath
             // 
@@ -498,6 +501,7 @@
             this.radioButton_model_info_self_set.TabStop = true;
             this.radioButton_model_info_self_set.Text = "自行设定";
             this.radioButton_model_info_self_set.UseVisualStyleBackColor = true;
+            this.radioButton_model_info_self_set.CheckedChanged += new System.EventHandler(this.radioButton_model_info_self_set_CheckedChanged);
             // 
             // radioButton_model_info_default
             // 
@@ -509,6 +513,7 @@
             this.radioButton_model_info_default.TabStop = true;
             this.radioButton_model_info_default.Text = "默认";
             this.radioButton_model_info_default.UseVisualStyleBackColor = true;
+            this.radioButton_model_info_default.CheckedChanged += new System.EventHandler(this.radioButton_model_info_default_CheckedChanged);
             // 
             // comboBox_svm_class_weight
             // 
@@ -659,6 +664,7 @@
             this.button_svm_predict_result_path.TabIndex = 4;
             this.button_svm_predict_result_path.Text = "获取";
             this.button_svm_predict_result_path.UseVisualStyleBackColor = true;
+            this.button_svm_predict_result_path.Click += new System.EventHandler(this.button_svm_predict_result_path_Click);
             // 
             // label_svm_predict_model_path
             // 
@@ -684,6 +690,7 @@
             this.button_svm_predict_model_path.TabIndex = 3;
             this.button_svm_predict_model_path.Text = "获取";
             this.button_svm_predict_model_path.UseVisualStyleBackColor = true;
+            this.button_svm_predict_model_path.Click += new System.EventHandler(this.button_svm_predict_model_path_Click);
             // 
             // textBox_svm_predict_model_path
             // 
@@ -772,7 +779,7 @@
         private System.Windows.Forms.Button button_fc_svm_model_savepath;
         private System.Windows.Forms.Label label_fc_train_data_folderpath;
         private System.Windows.Forms.TextBox textBox_fc_svm_model_savepath;
-        private System.Windows.Forms.TextBox textBox_fc_train_data_folderpath;
+        private System.Windows.Forms.TextBox textBox_fc_train_data_filepath;
         private System.Windows.Forms.Button button_fc_train_data_folderpath;
         private System.Windows.Forms.Label label_fc_svm_model_savepath;
         private System.Windows.Forms.SplitContainer splitContainer_fc_svm_train_up;
