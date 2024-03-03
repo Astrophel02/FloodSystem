@@ -4,11 +4,14 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Train_data_getNative;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
 
 namespace FloodDetection
 {
@@ -74,17 +77,21 @@ namespace FloodDetection
             //设置文件是否可以多选
             openfile.Multiselect = false;
 
-            openfile.ShowDialog();
-            string fullname = openfile.FileName;
+            // openfile.ShowDialog();
+            if (openfile.ShowDialog() == DialogResult.OK)
+            {
+                string fullname = openfile.FileName;
 
-            // 显示
-            textBox_fc_sample_path.Text = fullname;
-            // 执行日志
-            if (String.IsNullOrEmpty(richTextBox_fc_pre_process_run_record.Text))
-                richTextBox_fc_pre_process_run_record.AppendText(System.DateTime.Now.ToString() + " - - - - 样本文件路径获取成功");
-            else
-                richTextBox_fc_pre_process_run_record.AppendText(Environment.NewLine + System.DateTime.Now.ToString() +
-                    " - - - - 样本文件路径获取成功");
+                // 显示
+                textBox_fc_sample_path.Text = fullname;
+                // 执行日志
+                if (String.IsNullOrEmpty(richTextBox_fc_pre_process_run_record.Text))
+                    richTextBox_fc_pre_process_run_record.AppendText(System.DateTime.Now.ToString() + " - - - - 样本文件路径获取成功");
+                else
+                    richTextBox_fc_pre_process_run_record.AppendText(Environment.NewLine + System.DateTime.Now.ToString() +
+                        " - - - - 样本文件路径获取成功");
+            }
+
         }
 
         /// <summary>
@@ -182,7 +189,7 @@ namespace FloodDetection
         }
 
         /// <summary>
-        /// 数据保存按钮--数据预处理        -------------------- 后需更改
+        /// 数据保存按钮--数据预处理        ------------------------------------------------------------------------- 后需更改
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -221,5 +228,250 @@ namespace FloodDetection
 
             }             */
         }
+
+        /// <summary>
+        /// 获取训练数据位置（按钮）--地物分类
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void button_fc_train_data_folderpath_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openfile_train_data = new OpenFileDialog();
+            openfile_train_data.Title = "请选择训练数据";
+
+            // 若利用数据预处理功能，则为其保存位置；否则，初始文件选择位置为桌面
+            if (textBox_inputdata_path.Text != "")
+            {
+                openfile_train_data.InitialDirectory = textBox_inputdata_path.Text;
+            }
+            else
+            {
+                openfile_train_data.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            }
+
+            // 设置默认文件名
+            openfile_train_data.FileName = "";
+            // 设置文件过滤类型
+            openfile_train_data.Filter = "(*.txt)|*.txt|(*.bin)|*.bin";
+            openfile_train_data.FilterIndex = 1;
+            // 设置对话框是否记忆之前打开目录
+            openfile_train_data.RestoreDirectory = true;
+            //设置文件是否可以多选
+            openfile_train_data.Multiselect = false;
+
+            if (openfile_train_data.ShowDialog() == DialogResult.OK)
+            {
+                string fullname = openfile_train_data.FileName;
+
+                // 显示
+                textBox_fc_train_data_filepath.Text = fullname;
+                // 执行日志
+                if (String.IsNullOrEmpty(richTextBox_fc_pre_process_run_record.Text))
+                    richTextBox_fc_pre_process_run_record.AppendText(System.DateTime.Now.ToString() + " - - - - 训练数据获取成功");
+                else
+                    richTextBox_fc_pre_process_run_record.AppendText(Environment.NewLine + System.DateTime.Now.ToString() +
+                        " - - - - 训练数据获取成功");
+            }
+
+        }
+
+        /// <summary>
+        ///  设置 模型保存位置（按钮）--地物分类
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void button_fc_svm_model_savepath_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog dialog = new FolderBrowserDialog();
+            // 对话框描述
+            dialog.Description = "请选择训练模型保存位置";
+            //是否显示 新建文件夹 按钮，默认为 true
+            dialog.ShowNewFolderButton = true;
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                // 获取用户选择的文件夹路径
+                string selectedPath = dialog.SelectedPath;
+                // 显示
+                textBox_fc_svm_model_savepath.Text = selectedPath;
+                // 执行日志
+                if (String.IsNullOrEmpty(richTextBox_fc_pre_process_run_record.Text))
+                    richTextBox_fc_pre_process_run_record.AppendText(System.DateTime.Now.ToString() + " - - - - 训练模型保存位置设定成功");
+                else
+                    richTextBox_fc_pre_process_run_record.AppendText(Environment.NewLine + System.DateTime.Now.ToString() +
+                        " - - - - 训练模型保存位置设定成功");
+            }
+        }
+
+        /// <summary>
+        ///  获取 模型保存位置（按钮）--地物分类
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void button_svm_predict_model_path_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openfile_model_save = new OpenFileDialog();
+            openfile_model_save.Title = "请选择训练模型";
+            // 初始文件选择位置为桌面
+            openfile_model_save.InitialDirectory = System.Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            // 设置默认文件名
+            openfile_model_save.FileName = "";
+            // 设置文件过滤类型
+            openfile_model_save.Filter = "(*.joblib)|*.joblib|(*.bin)|*.bin";
+            openfile_model_save.FilterIndex = 1;
+            // 设置对话框是否记忆之前打开目录
+            openfile_model_save.RestoreDirectory = true;
+            //设置文件是否可以多选
+            openfile_model_save.Multiselect = false;
+
+            // openfile.ShowDialog();
+            if (openfile_model_save.ShowDialog() == DialogResult.OK)
+            {
+                string fullname = openfile_model_save.FileName;
+                // 显示
+                textBox_svm_predict_model_path.Text = fullname;
+                // 执行日志
+                if (String.IsNullOrEmpty(richTextBox_fc_pre_process_run_record.Text))
+                    richTextBox_fc_pre_process_run_record.AppendText(System.DateTime.Now.ToString() + " - - - - 模型获取成功");
+                else
+                    richTextBox_fc_pre_process_run_record.AppendText(Environment.NewLine + System.DateTime.Now.ToString() +
+                        " - - - - 模型获取成功");
+            }
+        }
+
+        /// <summary>
+        /// 获取 分类结果保存位置（按钮）--地物分类
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void button_svm_predict_result_path_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog dialog = new FolderBrowserDialog();
+            // 对话框描述
+            dialog.Description = "请选择分类结果保存位置";
+            //是否显示 新建文件夹 按钮，默认为 true
+            dialog.ShowNewFolderButton = true;
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                // 获取用户选择的文件夹路径
+                string selectedPath = dialog.SelectedPath;
+                // 显示
+                textBox_svm_predict_result_path.Text = selectedPath;
+                // 执行日志
+                if (String.IsNullOrEmpty(richTextBox_fc_pre_process_run_record.Text))
+                    richTextBox_fc_pre_process_run_record.AppendText(System.DateTime.Now.ToString() + " - - - - 分类结果保存位置设定成功");
+                else
+                    richTextBox_fc_pre_process_run_record.AppendText(Environment.NewLine + System.DateTime.Now.ToString() +
+                        " - - - - 分类结果保存位置设定成功");
+            }
+        }
+
+        /// <summary>
+        ///  选择默认参数进行训练
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void radioButton_model_info_default_CheckedChanged(object sender, EventArgs e)
+        {
+            
+            if (radioButton_model_info_default.Checked == true)
+            {
+                // 清空下拉框内容
+                comboBox_svm_kernel.Items.Clear();
+                comboBox_svm_decision_function_shape.Items.Clear();
+                comboBox_svm_class_weight.Items.Clear();
+
+                // 设置SVM训练默认参数
+                textBox_svm_train_radio.Text = Convert.ToString(0.7);               // 训练集占比70%
+                textBox_svm_C.Text = Convert.ToString(100);                         // 惩罚系数
+                textBox_svm_gamma.Text = Convert.ToString(0.9);                     // 核函数参数      如果gamma是'auto'，那么将使用1 / n_features
+                // kernel（核函数）
+                comboBox_svm_kernel.Items.Add("rbf");         // 径向基函数
+                comboBox_svm_kernel.Items.Add("linear");      // 线性核函数
+                /*
+                comboBox_svm_kernel.Items.Add("多项式核函数");    // poly
+                comboBox_svm_kernel.Items.Add("sigmoid函数");     // sigmoid
+                comboBox_svm_kernel.Items.Add("核函数矩阵");      // precomputed 
+                */
+                // decision_function_shape（因变量的形式）
+                comboBox_svm_decision_function_shape.Items.Add("ovr");      // 为one v rest（一对多），即一个类别与其他类别进行划分
+                comboBox_svm_decision_function_shape.Items.Add("ovo");      // 为one v one（一对一），即将类别两两之间进行划分，用二分类的方法模拟多分类的结果
+                // class_weight (调整类别的权重)
+                comboBox_svm_class_weight.Items.Add("balanced");      // 自动根据样本数来调整类别权重
+                // 设置默认项
+                comboBox_svm_class_weight.SelectedIndex = 0;
+                comboBox_svm_decision_function_shape.SelectedIndex = 0;
+                comboBox_svm_kernel.SelectedIndex = 0;
+
+                // 设置参数输入框为不可编辑
+                textBox_svm_C.ReadOnly = true;
+                textBox_svm_gamma.ReadOnly = true;
+                textBox_svm_train_radio.ReadOnly = true;
+                
+                comboBox_svm_class_weight.DropDownStyle= ComboBoxStyle.DropDownList;
+                comboBox_svm_decision_function_shape.DropDownStyle= ComboBoxStyle.DropDownList;
+                comboBox_svm_kernel.DropDownStyle= ComboBoxStyle.DropDownList;
+            }
+        }
+
+        /// <summary>
+        /// 自定义训练参数 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void radioButton_model_info_self_set_CheckedChanged(object sender, EventArgs e)
+        {
+            if(radioButton_model_info_self_set.Checked == true)
+            {
+                // 清空下拉框内容
+                comboBox_svm_kernel.Items.Clear();
+                comboBox_svm_decision_function_shape.Items.Clear();
+                comboBox_svm_class_weight.Items.Clear();
+
+                // 将参数输入栏清空
+                textBox_svm_train_radio.Text = null;               // 训练集占比
+                textBox_svm_C.Text = null;                         // 惩罚系数
+                textBox_svm_gamma.Text = null;                     // 核函数参数      如果gamma是'auto'，那么将使用1 / n_features
+                comboBox_svm_class_weight.Text = null;
+                comboBox_svm_decision_function_shape.Text = null;
+                comboBox_svm_kernel.Text = null;
+
+                // kernel（核函数）
+                comboBox_svm_kernel.Items.Add("rbf");         // 径向基函数
+                comboBox_svm_kernel.Items.Add("linear");      // 线性核函数
+                /*
+                comboBox_svm_kernel.Items.Add("多项式核函数");    // poly
+                comboBox_svm_kernel.Items.Add("sigmoid函数");     // sigmoid
+                comboBox_svm_kernel.Items.Add("核函数矩阵");      // precomputed 
+                */
+                // decision_function_shape（因变量的形式）
+                comboBox_svm_decision_function_shape.Items.Add("ovr");      // 为one v rest（一对多），即一个类别与其他类别进行划分
+                comboBox_svm_decision_function_shape.Items.Add("ovo");      // 为one v one（一对一），即将类别两两之间进行划分，用二分类的方法模拟多分类的结果
+                // class_weight (调整类别的权重)
+                comboBox_svm_class_weight.Items.Add("balanced");      // 自动根据样本数来调整类别权重
+
+                // 设置参数输入框为可输入
+                textBox_svm_C.ReadOnly = false;
+                textBox_svm_gamma.ReadOnly = false;
+                textBox_svm_train_radio.ReadOnly = false;
+
+                // 设置下拉框为不可输入
+                comboBox_svm_class_weight.DropDownStyle = ComboBoxStyle.DropDownList;
+                comboBox_svm_decision_function_shape.DropDownStyle = ComboBoxStyle.DropDownList;
+                comboBox_svm_kernel.DropDownStyle = ComboBoxStyle.DropDownList;
+            }
+        }
+
+        /// <summary>
+        /// 模型训练（按钮）--地物分类
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void button_fc_svm_train_Click(object sender, EventArgs e)
+        {
+
+
+        }
+
+       
     }
 }
