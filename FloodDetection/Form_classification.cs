@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Linq;
@@ -355,7 +356,7 @@ namespace FloodDetection
                 // 获取用户选择的文件夹路径
                 string selectedPath = dialog.SelectedPath;
                 // 显示
-                textBox_svm_predict_result_path.Text = selectedPath;
+                textBox_svm_predict_data_path.Text = selectedPath;
                 // 执行日志
                 if (String.IsNullOrEmpty(richTextBox_fc_pre_process_run_record.Text))
                     richTextBox_fc_pre_process_run_record.AppendText(System.DateTime.Now.ToString() + " - - - - 分类结果保存位置设定成功");
@@ -372,7 +373,7 @@ namespace FloodDetection
         /// <param name="e"></param>
         private void radioButton_model_info_default_CheckedChanged(object sender, EventArgs e)
         {
-            
+
             if (radioButton_model_info_default.Checked == true)
             {
                 // 清空下拉框内容
@@ -406,10 +407,10 @@ namespace FloodDetection
                 textBox_svm_C.ReadOnly = true;
                 textBox_svm_gamma.ReadOnly = true;
                 textBox_svm_train_radio.ReadOnly = true;
-                
-                comboBox_svm_class_weight.DropDownStyle= ComboBoxStyle.DropDownList;
-                comboBox_svm_decision_function_shape.DropDownStyle= ComboBoxStyle.DropDownList;
-                comboBox_svm_kernel.DropDownStyle= ComboBoxStyle.DropDownList;
+
+                comboBox_svm_class_weight.DropDownStyle = ComboBoxStyle.DropDownList;
+                comboBox_svm_decision_function_shape.DropDownStyle = ComboBoxStyle.DropDownList;
+                comboBox_svm_kernel.DropDownStyle = ComboBoxStyle.DropDownList;
             }
         }
 
@@ -420,7 +421,7 @@ namespace FloodDetection
         /// <param name="e"></param>
         private void radioButton_model_info_self_set_CheckedChanged(object sender, EventArgs e)
         {
-            if(radioButton_model_info_self_set.Checked == true)
+            if (radioButton_model_info_self_set.Checked == true)
             {
                 // 清空下拉框内容
                 comboBox_svm_kernel.Items.Clear();
@@ -468,10 +469,74 @@ namespace FloodDetection
         /// <param name="e"></param>
         private void button_fc_svm_train_Click(object sender, EventArgs e)
         {
+            // 参数传递为字符串形式
+            // 训练参数
+            string train_data_path = textBox_fc_train_data_filepath.Text;          // 训练数据存放路径
+            string model_train_save = textBox_fc_svm_model_savepath.Text + "\\farm_extract_model.joblib";          // 训练后模型保存路径
+            // string [,]feature_select = new string[1, 4];                           // 特征选择（1 即为选中）
+            string feature_select = null;
+            for (int i = 0; i < 4; i++)
+            {
+                if (checkedListBox_fc_feature_select.GetItemChecked(i))
+                {
+                    feature_select = feature_select + "1" + " ";
+                }
+                else
+                {
+                    feature_select = feature_select + "0" + " ";
+                }
+            }
+            string train_radio = textBox_svm_train_radio.Text;         // 训练数据占比（1 即 100%）
+            // 训练参数（ C， kernel ，gamma ，decision_function_shape ）
+            string train_info = "[" + textBox_svm_C.Text + "," + "'" + comboBox_svm_kernel.Text + "'" + "," + textBox_svm_gamma.Text + "," + "'" + comboBox_svm_decision_function_shape.Text + "'" + "]";
 
+            string pyexePath = System.Environment.CurrentDirectory + "\\train_test.exe";  //python文件所在路径
+            Process p_train = new Process();
+            p_train.StartInfo.FileName = pyexePath;//需要执行的文件路径
+            p_train.StartInfo.UseShellExecute = false; //必需
+            p_train.StartInfo.RedirectStandardOutput = true;//输出参数设定
+            p_train.StartInfo.RedirectStandardInput = true;//传入参数设定
+            p_train.StartInfo.CreateNoWindow = true;
+            // 参数 （字符串形式）
+            p_train.StartInfo.Arguments = "train_data_path model_train_save feature_select train_radio train_info"; //参数以空格分隔，如果某个参数为空，可以传入””
+            p_train.Start();
+            string output = p_train.StandardOutput.ReadToEnd();
+            p_train.WaitForExit();//等待外部程序退出后才能往下执行(key)
+            Console.Write(output);//输出
+            p_train.Close();
 
         }
 
-       
+        /// <summary>
+        /// 模型分类（按钮）--地物分类
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void button_fc_svm_predict_Click(object sender, EventArgs e)
+        {
+            string train_data_path = textBox_fc_train_data_filepath.Text;          // 待预测数据存放路径
+            string model_train_save = textBox_fc_svm_model_savepath.Text + "\\farm_extract_model.joblib";          // 分类模型存放路径
+
+            string pyexePath = System.Environment.CurrentDirectory + "\\predict_test.exe";  //python文件所在路径
+            Process p_predict = new Process();
+            p_predict.StartInfo.FileName = pyexePath;//需要执行的文件路径
+            p_predict.StartInfo.UseShellExecute = false; //必需
+            p_predict.StartInfo.RedirectStandardOutput = true;//输出参数设定
+            p_predict.StartInfo.RedirectStandardInput = true;//传入参数设定
+            p_predict.StartInfo.CreateNoWindow = true;
+            // 参数 （字符串形式）
+            p_predict.StartInfo.Arguments = "train_data_path model_train_save feature_select "; //参数以空格分隔，如果某个参数为空，可以传入””
+            p_predict.Start();
+            string output = p_predict.StandardOutput.ReadToEnd();
+            p_predict.WaitForExit();//等待外部程序退出后才能往下执行(key)
+
+            // 执行日志 处 显示信息
+            if (String.IsNullOrEmpty(richTextBox_fc_pre_process_run_record.Text))
+                richTextBox_fc_pre_process_run_record.AppendText(System.DateTime.Now.ToString() + " - - - - -" + output);
+            else
+                richTextBox_fc_pre_process_run_record.AppendText(Environment.NewLine + System.DateTime.Now.ToString() +
+                    " - - - - -" + output);
+            p_predict.Close();
+        }
     }
 }
