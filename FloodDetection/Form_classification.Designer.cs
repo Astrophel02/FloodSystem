@@ -79,12 +79,15 @@
             this.groupBox_fc_feature_select = new System.Windows.Forms.GroupBox();
             this.checkedListBox_fc_feature_select = new System.Windows.Forms.CheckedListBox();
             this.groupBox_fc_svm_predict = new System.Windows.Forms.GroupBox();
-            this.button_svm_predict_result_path = new System.Windows.Forms.Button();
+            this.button_svm_predict_data_path = new System.Windows.Forms.Button();
             this.label_svm_predict_model_path = new System.Windows.Forms.Label();
-            this.textBox_svm_predict_result_path = new System.Windows.Forms.TextBox();
+            this.textBox_svm_predict_data_path = new System.Windows.Forms.TextBox();
             this.button_svm_predict_model_path = new System.Windows.Forms.Button();
             this.textBox_svm_predict_model_path = new System.Windows.Forms.TextBox();
-            this.label_svm_predict_result_path = new System.Windows.Forms.Label();
+            this.label_svm_predict_data_path = new System.Windows.Forms.Label();
+            this.button_predict_result_save = new System.Windows.Forms.Button();
+            this.textBox_predict_result_save = new System.Windows.Forms.TextBox();
+            this.label_predict_result_save = new System.Windows.Forms.Label();
             this.tabControl_classification_svm.SuspendLayout();
             this.tabPage_fc_data_pre_process.SuspendLayout();
             this.groupBox_fc_image_size.SuspendLayout();
@@ -117,7 +120,7 @@
             this.tabControl_classification_svm.Location = new System.Drawing.Point(0, 0);
             this.tabControl_classification_svm.Name = "tabControl_classification_svm";
             this.tabControl_classification_svm.SelectedIndex = 0;
-            this.tabControl_classification_svm.Size = new System.Drawing.Size(840, 514);
+            this.tabControl_classification_svm.Size = new System.Drawing.Size(840, 545);
             this.tabControl_classification_svm.TabIndex = 1;
             // 
             // tabPage_fc_data_pre_process
@@ -130,7 +133,7 @@
             this.tabPage_fc_data_pre_process.Location = new System.Drawing.Point(4, 25);
             this.tabPage_fc_data_pre_process.Name = "tabPage_fc_data_pre_process";
             this.tabPage_fc_data_pre_process.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage_fc_data_pre_process.Size = new System.Drawing.Size(832, 485);
+            this.tabPage_fc_data_pre_process.Size = new System.Drawing.Size(832, 516);
             this.tabPage_fc_data_pre_process.TabIndex = 0;
             this.tabPage_fc_data_pre_process.Text = "数据预处理";
             this.tabPage_fc_data_pre_process.UseVisualStyleBackColor = true;
@@ -204,7 +207,7 @@
             // 
             // button_fc_pre_data_notice
             // 
-            this.button_fc_pre_data_notice.Location = new System.Drawing.Point(675, 432);
+            this.button_fc_pre_data_notice.Location = new System.Drawing.Point(675, 463);
             this.button_fc_pre_data_notice.Name = "button_fc_pre_data_notice";
             this.button_fc_pre_data_notice.Size = new System.Drawing.Size(109, 34);
             this.button_fc_pre_data_notice.TabIndex = 11;
@@ -283,7 +286,7 @@
             // 
             // button_fc_pre_data_get
             // 
-            this.button_fc_pre_data_get.Location = new System.Drawing.Point(545, 432);
+            this.button_fc_pre_data_get.Location = new System.Drawing.Point(545, 463);
             this.button_fc_pre_data_get.Name = "button_fc_pre_data_get";
             this.button_fc_pre_data_get.Size = new System.Drawing.Size(110, 34);
             this.button_fc_pre_data_get.TabIndex = 9;
@@ -296,7 +299,7 @@
             this.groupBox_fc_pre_process_show.Controls.Add(this.richTextBox_fc_pre_process_run_record);
             this.groupBox_fc_pre_process_show.Location = new System.Drawing.Point(31, 175);
             this.groupBox_fc_pre_process_show.Name = "groupBox_fc_pre_process_show";
-            this.groupBox_fc_pre_process_show.Size = new System.Drawing.Size(756, 241);
+            this.groupBox_fc_pre_process_show.Size = new System.Drawing.Size(756, 276);
             this.groupBox_fc_pre_process_show.TabIndex = 3;
             this.groupBox_fc_pre_process_show.TabStop = false;
             this.groupBox_fc_pre_process_show.Text = "执行日志";
@@ -307,7 +310,7 @@
             this.richTextBox_fc_pre_process_run_record.Location = new System.Drawing.Point(3, 21);
             this.richTextBox_fc_pre_process_run_record.Name = "richTextBox_fc_pre_process_run_record";
             this.richTextBox_fc_pre_process_run_record.ReadOnly = true;
-            this.richTextBox_fc_pre_process_run_record.Size = new System.Drawing.Size(750, 217);
+            this.richTextBox_fc_pre_process_run_record.Size = new System.Drawing.Size(750, 252);
             this.richTextBox_fc_pre_process_run_record.TabIndex = 1;
             this.richTextBox_fc_pre_process_run_record.Text = "";
             // 
@@ -320,25 +323,26 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 25);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(832, 485);
+            this.tabPage2.Size = new System.Drawing.Size(832, 516);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "地物分类";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // button_fc_svm_predict
             // 
-            this.button_fc_svm_predict.Location = new System.Drawing.Point(691, 447);
+            this.button_fc_svm_predict.Location = new System.Drawing.Point(691, 473);
             this.button_fc_svm_predict.Name = "button_fc_svm_predict";
-            this.button_fc_svm_predict.Size = new System.Drawing.Size(94, 27);
+            this.button_fc_svm_predict.Size = new System.Drawing.Size(94, 29);
             this.button_fc_svm_predict.TabIndex = 1;
             this.button_fc_svm_predict.Text = "模型分类";
             this.button_fc_svm_predict.UseVisualStyleBackColor = true;
+            this.button_fc_svm_predict.Click += new System.EventHandler(this.button_fc_svm_predict_Click);
             // 
             // button_fc_svm_train
             // 
-            this.button_fc_svm_train.Location = new System.Drawing.Point(569, 447);
+            this.button_fc_svm_train.Location = new System.Drawing.Point(569, 473);
             this.button_fc_svm_train.Name = "button_fc_svm_train";
-            this.button_fc_svm_train.Size = new System.Drawing.Size(94, 27);
+            this.button_fc_svm_train.Size = new System.Drawing.Size(94, 29);
             this.button_fc_svm_train.TabIndex = 0;
             this.button_fc_svm_train.Text = "模型训练";
             this.button_fc_svm_train.UseVisualStyleBackColor = true;
@@ -643,48 +647,51 @@
             // 
             // groupBox_fc_svm_predict
             // 
-            this.groupBox_fc_svm_predict.Controls.Add(this.button_svm_predict_result_path);
+            this.groupBox_fc_svm_predict.Controls.Add(this.button_predict_result_save);
+            this.groupBox_fc_svm_predict.Controls.Add(this.textBox_predict_result_save);
+            this.groupBox_fc_svm_predict.Controls.Add(this.label_predict_result_save);
+            this.groupBox_fc_svm_predict.Controls.Add(this.button_svm_predict_data_path);
             this.groupBox_fc_svm_predict.Controls.Add(this.label_svm_predict_model_path);
-            this.groupBox_fc_svm_predict.Controls.Add(this.textBox_svm_predict_result_path);
+            this.groupBox_fc_svm_predict.Controls.Add(this.textBox_svm_predict_data_path);
             this.groupBox_fc_svm_predict.Controls.Add(this.button_svm_predict_model_path);
             this.groupBox_fc_svm_predict.Controls.Add(this.textBox_svm_predict_model_path);
-            this.groupBox_fc_svm_predict.Controls.Add(this.label_svm_predict_result_path);
-            this.groupBox_fc_svm_predict.Location = new System.Drawing.Point(38, 321);
+            this.groupBox_fc_svm_predict.Controls.Add(this.label_svm_predict_data_path);
+            this.groupBox_fc_svm_predict.Location = new System.Drawing.Point(38, 320);
             this.groupBox_fc_svm_predict.Name = "groupBox_fc_svm_predict";
-            this.groupBox_fc_svm_predict.Size = new System.Drawing.Size(751, 114);
+            this.groupBox_fc_svm_predict.Size = new System.Drawing.Size(751, 147);
             this.groupBox_fc_svm_predict.TabIndex = 7;
             this.groupBox_fc_svm_predict.TabStop = false;
             this.groupBox_fc_svm_predict.Text = "模型分类";
             // 
-            // button_svm_predict_result_path
+            // button_svm_predict_data_path
             // 
-            this.button_svm_predict_result_path.Location = new System.Drawing.Point(567, 67);
-            this.button_svm_predict_result_path.Name = "button_svm_predict_result_path";
-            this.button_svm_predict_result_path.Size = new System.Drawing.Size(78, 27);
-            this.button_svm_predict_result_path.TabIndex = 4;
-            this.button_svm_predict_result_path.Text = "获取";
-            this.button_svm_predict_result_path.UseVisualStyleBackColor = true;
-            this.button_svm_predict_result_path.Click += new System.EventHandler(this.button_svm_predict_result_path_Click);
+            this.button_svm_predict_data_path.Location = new System.Drawing.Point(567, 24);
+            this.button_svm_predict_data_path.Name = "button_svm_predict_data_path";
+            this.button_svm_predict_data_path.Size = new System.Drawing.Size(78, 27);
+            this.button_svm_predict_data_path.TabIndex = 4;
+            this.button_svm_predict_data_path.Text = "获取";
+            this.button_svm_predict_data_path.UseVisualStyleBackColor = true;
+            this.button_svm_predict_data_path.Click += new System.EventHandler(this.button_svm_predict_result_path_Click);
             // 
             // label_svm_predict_model_path
             // 
             this.label_svm_predict_model_path.AutoSize = true;
-            this.label_svm_predict_model_path.Location = new System.Drawing.Point(131, 33);
+            this.label_svm_predict_model_path.Location = new System.Drawing.Point(127, 72);
             this.label_svm_predict_model_path.Name = "label_svm_predict_model_path";
             this.label_svm_predict_model_path.Size = new System.Drawing.Size(97, 15);
             this.label_svm_predict_model_path.TabIndex = 1;
             this.label_svm_predict_model_path.Text = "分类模型位置";
             // 
-            // textBox_svm_predict_result_path
+            // textBox_svm_predict_data_path
             // 
-            this.textBox_svm_predict_result_path.Location = new System.Drawing.Point(241, 70);
-            this.textBox_svm_predict_result_path.Name = "textBox_svm_predict_result_path";
-            this.textBox_svm_predict_result_path.Size = new System.Drawing.Size(295, 25);
-            this.textBox_svm_predict_result_path.TabIndex = 4;
+            this.textBox_svm_predict_data_path.Location = new System.Drawing.Point(241, 27);
+            this.textBox_svm_predict_data_path.Name = "textBox_svm_predict_data_path";
+            this.textBox_svm_predict_data_path.Size = new System.Drawing.Size(295, 25);
+            this.textBox_svm_predict_data_path.TabIndex = 4;
             // 
             // button_svm_predict_model_path
             // 
-            this.button_svm_predict_model_path.Location = new System.Drawing.Point(567, 27);
+            this.button_svm_predict_model_path.Location = new System.Drawing.Point(567, 66);
             this.button_svm_predict_model_path.Name = "button_svm_predict_model_path";
             this.button_svm_predict_model_path.Size = new System.Drawing.Size(78, 27);
             this.button_svm_predict_model_path.TabIndex = 3;
@@ -694,25 +701,50 @@
             // 
             // textBox_svm_predict_model_path
             // 
-            this.textBox_svm_predict_model_path.Location = new System.Drawing.Point(241, 27);
+            this.textBox_svm_predict_model_path.Location = new System.Drawing.Point(241, 66);
             this.textBox_svm_predict_model_path.Name = "textBox_svm_predict_model_path";
             this.textBox_svm_predict_model_path.Size = new System.Drawing.Size(295, 25);
             this.textBox_svm_predict_model_path.TabIndex = 2;
             // 
-            // label_svm_predict_result_path
+            // label_svm_predict_data_path
             // 
-            this.label_svm_predict_result_path.AutoSize = true;
-            this.label_svm_predict_result_path.Location = new System.Drawing.Point(131, 73);
-            this.label_svm_predict_result_path.Name = "label_svm_predict_result_path";
-            this.label_svm_predict_result_path.Size = new System.Drawing.Size(97, 15);
-            this.label_svm_predict_result_path.TabIndex = 3;
-            this.label_svm_predict_result_path.Text = "结果保存位置";
+            this.label_svm_predict_data_path.AutoSize = true;
+            this.label_svm_predict_data_path.Location = new System.Drawing.Point(119, 30);
+            this.label_svm_predict_data_path.Name = "label_svm_predict_data_path";
+            this.label_svm_predict_data_path.Size = new System.Drawing.Size(112, 15);
+            this.label_svm_predict_data_path.TabIndex = 3;
+            this.label_svm_predict_data_path.Text = "待分类数据位置";
+            // 
+            // button_predict_result_save
+            // 
+            this.button_predict_result_save.Location = new System.Drawing.Point(567, 106);
+            this.button_predict_result_save.Name = "button_predict_result_save";
+            this.button_predict_result_save.Size = new System.Drawing.Size(78, 27);
+            this.button_predict_result_save.TabIndex = 7;
+            this.button_predict_result_save.Text = "保存";
+            this.button_predict_result_save.UseVisualStyleBackColor = true;
+            // 
+            // textBox_predict_result_save
+            // 
+            this.textBox_predict_result_save.Location = new System.Drawing.Point(241, 108);
+            this.textBox_predict_result_save.Name = "textBox_predict_result_save";
+            this.textBox_predict_result_save.Size = new System.Drawing.Size(295, 25);
+            this.textBox_predict_result_save.TabIndex = 6;
+            // 
+            // label_predict_result_save
+            // 
+            this.label_predict_result_save.AutoSize = true;
+            this.label_predict_result_save.Location = new System.Drawing.Point(128, 112);
+            this.label_predict_result_save.Name = "label_predict_result_save";
+            this.label_predict_result_save.Size = new System.Drawing.Size(97, 15);
+            this.label_predict_result_save.TabIndex = 5;
+            this.label_predict_result_save.Text = "结果保存位置";
             // 
             // Form_classification
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(840, 514);
+            this.ClientSize = new System.Drawing.Size(840, 545);
             this.Controls.Add(this.tabControl_classification_svm);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Form_classification";
@@ -802,11 +834,14 @@
         private System.Windows.Forms.GroupBox groupBox_fc_feature_select;
         private System.Windows.Forms.CheckedListBox checkedListBox_fc_feature_select;
         private System.Windows.Forms.GroupBox groupBox_fc_svm_predict;
-        private System.Windows.Forms.Button button_svm_predict_result_path;
+        private System.Windows.Forms.Button button_svm_predict_data_path;
         private System.Windows.Forms.Label label_svm_predict_model_path;
-        private System.Windows.Forms.TextBox textBox_svm_predict_result_path;
+        private System.Windows.Forms.TextBox textBox_svm_predict_data_path;
         private System.Windows.Forms.Button button_svm_predict_model_path;
         private System.Windows.Forms.TextBox textBox_svm_predict_model_path;
-        private System.Windows.Forms.Label label_svm_predict_result_path;
+        private System.Windows.Forms.Label label_svm_predict_data_path;
+        private System.Windows.Forms.Button button_predict_result_save;
+        private System.Windows.Forms.TextBox textBox_predict_result_save;
+        private System.Windows.Forms.Label label_predict_result_save;
     }
 }
